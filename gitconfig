@@ -1,0 +1,8 @@
+[user]
+	email = theseanjoseph@gmail.com
+	name = Sean Joseph
+[push]
+	default = simple
+[core]
+	autocrlf = input
+	editor = vim
