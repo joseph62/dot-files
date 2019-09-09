@@ -1,3 +1,7 @@
+# Import the environment dot file if it exists
+
+[ -f ~/.environment ] && . ~/.environment
+
 # Set up the prompt
 
 #autoload -Uz promptinit

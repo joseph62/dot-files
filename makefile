@@ -4,11 +4,11 @@ build : vim.zip rcfiles.zip
 vim.zip : vim
 	zip -r vim vim
 
-rcfiles.zip : aliases bash_logout bashrc \
+rcfiles.zip : aliases bash_logout bashrc environment\
 				gitconfig vimrc  profile zshrc
 	zip rcfiles aliases bash_logout bashrc\
 		gitconfig vimrc profile zshrc
 
-clean : 
+clean :
 	rm vim.zip
 	rm rcfiles.zip
