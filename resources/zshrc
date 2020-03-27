@@ -46,4 +46,4 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 # ~/.aliases, instead of adding them here directly.
 [ -f ~/.aliases ] && . ~/.aliases
 # Interactive syntax highlighting
-source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.local/opt/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
