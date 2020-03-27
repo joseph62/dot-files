@@ -5,13 +5,14 @@ echo "Installing Sean's scripts..."
 
 git clone https://github.com/joseph62/Scripts /tmp/Scripts
 
-create-directory-if-not-exists ~/bin
+create-directory-if-not-exists ~/.local
+create-directory-if-not-exists ~/.local/bin
 
 copy-all-script-files () {
 	for script in $(find $1 -type f); do
 		name=$(basename $script)
-		update-file $script ~/bin/$name $name
-		chmod +x ~/bin/$name
+		update-file $script ~/.local/bin/$name $name
+		chmod +x ~/.local/bin/$name
 	done;
 }
 
