@@ -9,8 +9,7 @@
 #prompt adam1
 
 # Custom prompt
-PROMPT='%F{202}%n@%m %1~ ->%f'
-RPROMPT='%F{202}<%!>%f'
+PROMPT='%F{202}%n@%m <%!> %1~ ->%f'
 
 setopt histignorealldups sharehistory
 
