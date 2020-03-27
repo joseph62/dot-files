@@ -9,12 +9,12 @@
 #prompt adam1
 
 # Custom prompt
-PROMPT='%F{202}%n@%m <%!> %1~ ->%f'
+PROMPT='%F{221}%n@%m %F{215}<%!> %1~ %F{209}->%f'
 
 setopt histignorealldups sharehistory
 
-# Use emacs keybindings even if our EDITOR is set to vi
-bindkey -e
+# Vi key bindings
+bindkey -v
 
 # Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
 HISTSIZE=1000
@@ -45,5 +45,6 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 # ~/.aliases, instead of adding them here directly.
 [ -f ~/.aliases ] && . ~/.aliases
+
 # Interactive syntax highlighting
-source ~/.local/opt/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+. ~/.local/opt/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
