@@ -3,11 +3,14 @@ echo 'Installing zsh...'
 
 . installation_scripts/installation-functions.sh
 
-update-file resources/aliases ~/.aliases 'aliases'
-update-file resources/environment ~/.environment 'environment'
+create-directory-if-not-exists ~/.local
+create-directory-if-not-exists ~/.local/etc
+create-directory-if-not-exists ~/.local/etc/dot-files
+
+update-file resources/aliases ~/.local/etc/dot-files/aliases 'aliases' 
+update-file resources/environment ~/.local/etc/dot-files/environment 'environment' 
 update-file resources/zshrc ~/.zshrc 'zshrc'
 
-create-directory-if-not-exists ~/.local
 create-directory-if-not-exists ~/.local/opt
 
 rm -r ~/.local/opt/zsh-syntax-highlighting

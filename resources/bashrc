@@ -1,3 +1,4 @@
+[ -f ~/.local/etc/dot-files/environment ] && . ~/.local/etc/dot-files/environment
 [ -f ~/.environment ] && . ~/.environment
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
@@ -82,6 +83,7 @@ esac
 # ~/.aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
+[ -f ~/.local/etc/dot-files/aliases ] && . ~/.local/etc/dot-files/environment
 [ -f ~/.aliases ] && . ~/.aliases
 
 # enable programmable completion features (you don't need to enable
