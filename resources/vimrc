@@ -109,7 +109,6 @@ endif
 " Also switch on highlighting the last used search pattern.
 if &t_Co > 2 || has("gui_running")
   syntax on
-  set hlsearch
 endif
 
 " Only do this part when compiled with support for autocommands.
@@ -154,8 +153,6 @@ if !exists(":DiffOrig")
 		  \ | wincmd p | diffthis
 endif
 
-let g:syntastic_python_checkers = ['pylint', 'mypy']
-
 set backup
 set backupdir=~/temp
 set dir=~/temp
@@ -164,4 +161,5 @@ set relativenumber
 set tabstop=4
 set shiftwidth=4
 set noexpandtab
+set visualbell
 
