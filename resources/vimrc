@@ -154,8 +154,6 @@ if !exists(":DiffOrig")
 		  \ | wincmd p | diffthis
 endif
 
-let g:syntastic_python_checkers = ['pylint', 'mypy']
-
 set backup
 set backupdir=~/temp
 set dir=~/temp
@@ -163,5 +161,6 @@ set number
 set relativenumber
 set tabstop=4
 set shiftwidth=4
-set noexpandtab
+set expandtab
+set visualbell
 
