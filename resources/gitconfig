@@ -6,3 +6,7 @@
 [core]
 	autocrlf = input
 	editor = vim
+[pull]
+    rebase = true
+[fetch]
+    prune = true
