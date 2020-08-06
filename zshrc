@@ -1,26 +1,35 @@
+function source_if_exists {
+    [ -f $1 ] && . $1
+}
+
 # Import the environment dot file if it exists
 
-[ -f ~/.local/etc/dot-files/environment ] && . ~/.local/etc/dot-files/environment
-[ -f ~/.environment ] && . ~/.environment
+source_if_exists ~/.local/etc/dot-files/environment
+source_if_exists ~/.environment
 
-# Set up the prompt
+# ~/.aliases, instead of adding them here directly.
+source_if_exists ~/.local/etc/dot-files/aliases
+source_if_exists ~/.aliases
 
-#autoload -Uz promptinit
-#promptinit
-#prompt adam1
+# Interactive syntax highlighting
+source_if_exists ~/.local/opt/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-# Custom prompt
+# Source Oh My Zsh plugins if they exist
+source_if_exists ~/.local/opt/ohmyzsh/plugins/git/git.plugin.zsh
+source_if_exists ~/.local/opt/ohmyzsh/plugins/mvn/mvn.plugin.zsh
+source_if_exists ~/.local/opt/ohmyzsh/plugins/cloudfoundry/cloudfoundry.plugin.zsh
+source_if_exists ~/.local/opt/ohmyzsh/plugins/z/z.plugin.zsh
+
 PROMPT='%F{221}%n@%m %F{215}<%!> %1~ %F{209}->%f'
 
 setopt histignorealldups sharehistory
-
-# Vi key bindings
-bindkey -v
-
 # Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
 HISTSIZE=1000
 SAVEHIST=1000
 HISTFILE=~/.zsh_history
+
+# Vi key bindings
+bindkey -v
 
 # Use modern completion system
 autoload -Uz compinit
@@ -42,11 +51,3 @@ zstyle ':completion:*' verbose true
 
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
-
-# ~/.aliases, instead of adding them here directly.
-[ -f ~/.local/etc/dot-files/aliases ] && . ~/.local/etc/dot-files/aliases
-[ -f ~/.aliases ] && . ~/.aliases
-
-# Interactive syntax highlighting
-. ~/.local/opt/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-. ~/.local/opt/ohmyzsh/plugins/git/git.plugin.zsh
