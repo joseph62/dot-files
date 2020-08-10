@@ -2,6 +2,13 @@ function source_if_exists {
     [ -f $1 ] && . $1
 }
 
+# Vi key bindings
+bindkey -v
+
+# Use modern completion system
+autoload -Uz compinit
+compinit
+
 # Import the environment dot file if it exists
 
 source_if_exists ~/.local/etc/dot-files/environment
@@ -27,13 +34,6 @@ setopt histignorealldups sharehistory
 HISTSIZE=1000
 SAVEHIST=1000
 HISTFILE=~/.zsh_history
-
-# Vi key bindings
-bindkey -v
-
-# Use modern completion system
-autoload -Uz compinit
-compinit
 
 zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' completer _expand _complete _correct _approximate
