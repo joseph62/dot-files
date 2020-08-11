@@ -22,6 +22,7 @@ source_if_exists ~/.aliases
 source_if_exists ~/.local/opt/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Source Oh My Zsh plugins if they exist
+source_if_exists ~/.local/opt/ohmyzsh/lib/git.zsh
 source_if_exists ~/.local/opt/ohmyzsh/plugins/git/git.plugin.zsh
 source_if_exists ~/.local/opt/ohmyzsh/plugins/mvn/mvn.plugin.zsh
 source_if_exists ~/.local/opt/ohmyzsh/plugins/cloudfoundry/cloudfoundry.plugin.zsh
