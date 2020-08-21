@@ -1,3 +1,4 @@
 # Define environment variables here
 # set PATH so it includes user's private bin directories
 export PATH="$HOME/bin:$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
+export IPYTHONDIR="$HOME/.local/etc/ipython"
