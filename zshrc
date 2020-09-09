@@ -27,6 +27,9 @@ source_if_exists ~/.local/opt/ohmyzsh/plugins/git/git.plugin.zsh
 source_if_exists ~/.local/opt/ohmyzsh/plugins/mvn/mvn.plugin.zsh
 source_if_exists ~/.local/opt/ohmyzsh/plugins/cloudfoundry/cloudfoundry.plugin.zsh
 source_if_exists ~/.local/opt/ohmyzsh/plugins/z/z.plugin.zsh
+source_if_exists ~/.local/opt/ohmyzsh/plugins/dnf/dnf.plugin.zsh
+source_if_exists ~/.local/opt/ohmyzsh/plugins/brew/brew.plugin.zsh
+source_if_exists ~/.local/opt/ohmyzsh/plugins/debian/debian.plugin.zsh
 
 PROMPT='%F{221}%n@%m %F{215}<%!> %1~ %F{209}->%f'
 
