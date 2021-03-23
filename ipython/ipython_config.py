@@ -1,4 +1,1 @@
-
-c.InteractiveShellApp.exec_files = [
-    'interactive.py',
-]
+c.InteractiveShellApp.exec_files = ["interactive.py"]
