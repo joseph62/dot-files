@@ -9,8 +9,7 @@ bindkey -v
 autoload -Uz compinit
 compinit
 
-# Import the environment dot file if it exists
-
+# ~/.environment, instead of adding them here directly
 source_if_exists ~/.local/etc/dot-files/environment
 source_if_exists ~/.environment
 
@@ -24,9 +23,6 @@ source_if_exists ~/.local/opt/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 # Source Oh My Zsh plugins if they exist
 source_if_exists ~/.local/opt/ohmyzsh/lib/git.zsh
 source_if_exists ~/.local/opt/ohmyzsh/plugins/git/git.plugin.zsh
-source_if_exists ~/.local/opt/ohmyzsh/plugins/mvn/mvn.plugin.zsh
-source_if_exists ~/.local/opt/ohmyzsh/plugins/cloudfoundry/cloudfoundry.plugin.zsh
-source_if_exists ~/.local/opt/ohmyzsh/plugins/z/z.plugin.zsh
 source_if_exists ~/.local/opt/ohmyzsh/plugins/dnf/dnf.plugin.zsh
 source_if_exists ~/.local/opt/ohmyzsh/plugins/brew/brew.plugin.zsh
 source_if_exists ~/.local/opt/ohmyzsh/plugins/debian/debian.plugin.zsh
