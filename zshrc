@@ -1,5 +1,11 @@
 function source_if_exists {
-    [ -f $1 ] && . $1
+    if [ -f $1 ] 
+    then
+        echo "Sourcing $1"
+        . $1
+    else
+        echo "Could not find '$1' for sourcing"
+    fi
 }
 
 # Vi key bindings
@@ -8,26 +14,6 @@ bindkey -v
 # Use modern completion system
 autoload -Uz compinit
 compinit
-
-# ~/.environment, instead of adding them here directly
-source_if_exists ~/.local/etc/dot-files/environment
-source_if_exists ~/.environment
-
-# ~/.aliases, instead of adding them here directly.
-source_if_exists ~/.local/etc/dot-files/aliases
-source_if_exists ~/.aliases
-
-# Interactive syntax highlighting
-source_if_exists ~/.local/opt/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-# Source Oh My Zsh plugins if they exist
-source_if_exists ~/.local/opt/ohmyzsh/lib/git.zsh
-source_if_exists ~/.local/opt/ohmyzsh/plugins/git/git.plugin.zsh
-source_if_exists ~/.local/opt/ohmyzsh/plugins/dnf/dnf.plugin.zsh
-source_if_exists ~/.local/opt/ohmyzsh/plugins/brew/brew.plugin.zsh
-source_if_exists ~/.local/opt/ohmyzsh/plugins/debian/debian.plugin.zsh
-
-PROMPT='%F{221}%n@%m %F{215}<%!> %1~ %F{209}->%f'
 
 setopt histignorealldups sharehistory
 # Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
@@ -51,3 +37,34 @@ zstyle ':completion:*' verbose true
 
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
+
+# Source Oh My Zsh plugins if they exist
+source_if_exists ~/.local/opt/ohmyzsh/lib/git.zsh
+
+typeset -a plugins
+plugins=(
+    'git'
+    'gitignore'
+    'git-auto-fetch'
+    'git-prompt'
+    'dnf'
+    'brew'
+    'debian'
+    'laravel'
+    'composer'
+    'docker'
+    'docker-compose'
+    'history'
+)
+for plugin ("$plugins[@]") source_if_exists "$HOME/.local/opt/ohmyzsh/plugins/$plugin/$plugin.plugin.zsh"
+
+# ~/.environment, instead of adding them here directly
+source_if_exists ~/.local/etc/dot-files/environment
+source_if_exists ~/.environment
+
+# ~/.aliases, instead of adding them here directly.
+source_if_exists ~/.local/etc/dot-files/aliases
+source_if_exists ~/.aliases
+
+# Interactive syntax highlighting
+source_if_exists ~/.local/opt/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
