@@ -46,7 +46,6 @@ plugins=(
     'git'
     'gitignore'
     'git-auto-fetch'
-    'git-prompt'
     'dnf'
     'brew'
     'debian'
