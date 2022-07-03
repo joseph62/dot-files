@@ -43,12 +43,12 @@ source_if_exists ~/.local/opt/ohmyzsh/lib/git.zsh
 
 typeset -a plugins
 plugins=(
+    'aliases'
     'git'
     'gitignore'
     'git-auto-fetch'
     'dnf'
     'brew'
-    'debian'
     'laravel'
     'composer'
     'docker'
