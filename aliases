@@ -1,3 +1,14 @@
+function alias_if_exists {
+    which $1
+    if [ $? -eq 0 ] 
+    then
+        echo "Detected '$1', Adding alias $2"
+        alias $2=$3
+    else
+        echo "Could not find '$1', Ignoring alias $2"
+    fi
+}
+
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -16,10 +27,12 @@ alias l='ls -CF'
 alias bye='exit'
 alias tmux='tmux -2'
 alias mit-scheme='rlwrap --multi-line --multi-line-ext ".scm" mit-scheme'
-alias cd='z'
-alias cat='bat'
-alias ls='exa'
-alias grep='rg'
+
+# Overwriting common utilities with new versions if they are detected
+alias_if_exists z cd z
+alias_if_exists bat cat bat
+alias_if_exists exa ls exa
+alias_if_exists rg grep rg
 
 # Rust, Cargo, Rustup
 alias carf='cargo fmt'
