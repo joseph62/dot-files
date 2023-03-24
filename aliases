@@ -43,3 +43,6 @@ alias carc='cargo clippy'
 alias cart='cargo test'
 alias carnt='cargo nextest run'
 alias carfcb='cargo fmt && cargo clippy && cargo build'
+
+# Additional git aliases
+alias_if_exists git gta 'git tag'
