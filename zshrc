@@ -18,7 +18,7 @@ function source_if_exists {
         echo "Could not find '$1' for sourcing"
     fi
 }
-
+export ZSH=$HOME/.oh-my-zsh
 source_if_exists "$HOME/.asdf/asdf.sh"
 
 # Vi key bindings
@@ -59,30 +59,27 @@ source_if_exists ~/.local/opt/ohmyzsh/lib/git.zsh
 
 typeset -a plugins
 plugins=(
-    'aliases'
-    'git'
-    'gitignore'
-    'git-auto-fetch'
-    'dnf'
-    'brew'
-    'laravel'
-    'composer'
-    'docker'
-    'docker-compose'
-    'history'
+    aliases
+    git
+    gitignore
+    git-auto-fetch
+    dnf
+    brew
+    laravel
+    composer
+    docker
+    docker-compose
+    history
+    zsh-syntax-highlighting
 )
-for plugin ("$plugins[@]") source_if_exists "$HOME/.local/opt/ohmyzsh/plugins/$plugin/$plugin.plugin.zsh"
+
+source $ZSH/oh-my-zsh.sh
 
 # ~/.environment, instead of adding them here directly
-source_if_exists ~/.local/etc/dot-files/environment
 source_if_exists ~/.environment
 
 # ~/.aliases, instead of adding them here directly.
-source_if_exists ~/.local/etc/dot-files/aliases
 source_if_exists ~/.aliases
-
-# Interactive syntax highlighting
-source_if_exists ~/.local/opt/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Define environment variables here
 # set PATH so it includes user's private bin directories
