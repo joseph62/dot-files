@@ -1,3 +1,14 @@
+function alias_if_exists {
+    which $1 &> /dev/null
+    if [ $? -eq 0 ] 
+    then
+        echo "Detected '$1', Adding alias $2=$3"
+        alias $2=$3
+    else
+        echo "Could not find '$1', Ignoring alias $2=$3"
+    fi
+}
+
 function source_if_exists {
     if [ -f $1 ] 
     then
@@ -8,8 +19,13 @@ function source_if_exists {
     fi
 }
 
+source_if_exists "$HOME/.asdf/asdf.sh"
+
 # Vi key bindings
 bindkey -v
+
+# append asdf completions to fpath
+fpath=(${ASDF_DIR}/completions $fpath)
 
 # Use modern completion system
 autoload -Uz compinit
@@ -67,3 +83,51 @@ source_if_exists ~/.aliases
 
 # Interactive syntax highlighting
 source_if_exists ~/.local/opt/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# Define environment variables here
+# set PATH so it includes user's private bin directories
+export PATH="$HOME/bin:$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
+export IPYTHONDIR="$HOME/.local/etc/ipython"
+export PROMPT="%F{221}%n@%m %F{215}<%!> %1~ %F{209} ->%f"
+unset RPROMPT
+
+eval "$(zoxide init zsh)"
+eval "$(thefuck --alias)"
+
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+
+alias hgrep='history 0 | grep'
+alias agrep='alias | grep'
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+alias bye='exit'
+alias tmux='tmux -2'
+alias mit-scheme='rlwrap --multi-line --multi-line-ext ".scm" mit-scheme'
+
+# Overwriting common utilities with new versions if they are detected
+alias_if_exists z cd z
+alias_if_exists bat cat bat
+alias_if_exists exa ls exa
+alias_if_exists rg grep rg
+alias_if_exists rip rm rip
+
+# Rust, Cargo, Rustup
+alias carf='cargo fmt'
+alias carr='cargo run'
+alias carb='cargo build'
+alias carc='cargo clippy'
+alias cart='cargo test'
+alias carnt='cargo nextest run'
+alias carfcb='cargo fmt && cargo clippy && cargo build'
+
+# Additional git aliases
+alias_if_exists git gta 'git tag'
