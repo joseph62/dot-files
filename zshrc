@@ -54,9 +54,6 @@ zstyle ':completion:*' verbose true
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
-# Source Oh My Zsh plugins if they exist
-source_if_exists ~/.local/opt/ohmyzsh/lib/git.zsh
-
 typeset -a plugins
 plugins=(
     aliases
@@ -115,7 +112,6 @@ alias_if_exists z cd z
 alias_if_exists bat cat bat
 alias_if_exists exa ls exa
 alias_if_exists rg grep rg
-alias_if_exists rip rm rip
 
 # Rust, Cargo, Rustup
 alias carf='cargo fmt'
