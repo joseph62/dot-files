@@ -1,9 +1,0 @@
-# Define environment variables here
-# set PATH so it includes user's private bin directories
-export PATH="$HOME/bin:$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
-export IPYTHONDIR="$HOME/.local/etc/ipython"
-export PROMPT="%F{221}%n@%m %F{215}<%!> %1~ %F{209} ->%f"
-unset RPROMPT
-
-eval "$(zoxide init zsh)"
-eval "$(thefuck --alias)"
