@@ -1,3 +1,3 @@
-if [ -f "$HOME/.zshrc" ]; then
+if [[ -f "$HOME/.zshrc" && ! -n "${ZSH+1}" ]]; then
 . "$HOME/.zshrc"
 fi
