@@ -21,9 +21,6 @@ function source_if_exists {
 export ZSH=$HOME/.oh-my-zsh
 source_if_exists "$HOME/.asdf/asdf.sh"
 
-# Vi key bindings
-bindkey -v
-
 # append asdf completions to fpath
 fpath=(${ASDF_DIR}/completions $fpath)
 
@@ -71,6 +68,9 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
+
+# Vi key bindings
+bindkey -v
 
 # ~/.environment, instead of adding them here directly
 source_if_exists ~/.environment
