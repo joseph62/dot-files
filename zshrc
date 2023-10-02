@@ -21,9 +21,9 @@ function source_if_exists {
 
 export ZSH=$HOME/.oh-my-zsh
 
-if [ -f "~/.local/bin/rtx" ] 
+if [ -f "$HOME/.local/bin/rtx" ] 
 then
-    eval "$(~/.local/bin/rtx activate zsh)"
+    eval "$($HOME/.local/bin/rtx activate zsh)"
 fi
 
 # Use modern completion system
