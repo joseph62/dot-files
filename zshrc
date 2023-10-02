@@ -21,11 +21,6 @@ function source_if_exists {
 
 export ZSH=$HOME/.oh-my-zsh
 
-if [ -f "$HOME/.local/bin/rtx" ] 
-then
-    eval "$($HOME/.local/bin/rtx activate zsh)"
-fi
-
 # Use modern completion system
 autoload -Uz compinit
 compinit
@@ -89,6 +84,8 @@ unset RPROMPT
 
 eval "$(zoxide init zsh)"
 eval "$(thefuck --alias)"
+eval "$(rtx activate zsh)"
+
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
