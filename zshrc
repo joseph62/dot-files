@@ -18,11 +18,12 @@ function source_if_exists {
         echo "Could not find '$1' for sourcing"
     fi
 }
-export ZSH=$HOME/.oh-my-zsh
-source_if_exists "$HOME/.asdf/asdf.sh"
 
-# append asdf completions to fpath
-fpath=(${ASDF_DIR}/completions $fpath)
+export ZSH=$HOME/.oh-my-zsh
+
+if [ -f "~/.rtx" ] then
+    eval "$(~/.rtx/bin/rtx activate zsh)"
+fi
 
 # Use modern completion system
 autoload -Uz compinit
