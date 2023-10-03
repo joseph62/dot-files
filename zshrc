@@ -62,7 +62,10 @@ plugins=(
     docker-compose
     history
     zsh-syntax-highlighting
+    zsh-autosuggestions
 )
+
+fpath+=$ZSH/custom/plugins/zsh-completions/src
 
 source $ZSH/oh-my-zsh.sh
 
