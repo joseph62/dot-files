@@ -67,15 +67,15 @@ plugins=(
 
 . /etc/os-release
 
-case "$ID" in
-    "fedora")
-        plugins+=(dnf)
-        ;;
-    "ubuntu")
-        plugins+=(ubuntu
-        ;;
-    *)
-        ;;
+case $ID in
+fedora)
+    plugins+=(dnf)
+    ;;
+ubuntu)
+    plugins+=(ubuntu)
+    ;;
+*)
+    ;;
 esac
 
 fpath+=$ZSH/custom/plugins/zsh-completions/src
