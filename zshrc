@@ -51,21 +51,36 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 typeset -a plugins
 plugins=(
     aliases
+    rtx
     git
     gitignore
     git-auto-fetch
-    dnf
-    brew
-    laravel
-    composer
     docker
     docker-compose
     history
     zsh-syntax-highlighting
     zsh-autosuggestions
+    zoxide
+    thefuck
+    rust
 )
 
+. /etc/os-release
+
+case "$ID" in
+    "fedora")
+        plugins+=(dnf)
+        ;;
+    "ubuntu")
+        plugins+=(ubuntu
+        ;;
+    *)
+        ;;
+esac
+
 fpath+=$ZSH/custom/plugins/zsh-completions/src
+
+ZSH_THEME="agnoster"
 
 source $ZSH/oh-my-zsh.sh
 
@@ -81,33 +96,6 @@ source_if_exists ~/.aliases
 # Define environment variables here
 # set PATH so it includes user's private bin directories
 export PATH="$HOME/bin:$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
-export IPYTHONDIR="$HOME/.local/etc/ipython"
-export PROMPT="%F{221}%n@%m %F{215}<%!> %1~ %F{209} ->%f"
-unset RPROMPT
-
-eval "$(zoxide init zsh)"
-eval "$(thefuck --alias)"
-eval "$(rtx activate zsh)"
-
-
-# enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-fi
-
-alias hgrep='history 0 | grep'
-alias agrep='alias | grep'
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-alias bye='exit'
-alias tmux='tmux -2'
-alias mit-scheme='rlwrap --multi-line --multi-line-ext ".scm" mit-scheme'
 
 # Overwriting common utilities with new versions if they are detected
 alias_if_exists z cd z
