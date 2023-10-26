@@ -80,7 +80,7 @@ esac
 
 fpath+=$ZSH/custom/plugins/zsh-completions/src
 
-ZSH_THEME="robbyrussell"
+ZSH_THEME="agnoster"
 
 source $ZSH/oh-my-zsh.sh
 
