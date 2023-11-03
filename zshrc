@@ -66,6 +66,7 @@ plugins=(
 )
 
 if [ "${OSTYPE#darwin}" != "$OSTYPE" ] # darwin prefix in OSTYPE
+then
     ID=macos
 else
     . /etc/os-release
@@ -80,6 +81,7 @@ ubuntu)
     ;;
 macos)
     plugins+=(brew)
+    ;;
 *)
     ;;
 esac
