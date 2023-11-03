@@ -65,7 +65,11 @@ plugins=(
     rust
 )
 
-. /etc/os-release
+if [ "${OSTYPE#darwin}" != "$OSTYPE" ] # darwin prefix in OSTYPE
+    ID=macos
+else
+    . /etc/os-release
+fi
 
 case $ID in
 fedora)
@@ -74,6 +78,8 @@ fedora)
 ubuntu)
     plugins+=(ubuntu)
     ;;
+macos)
+    plugins+=(brew)
 *)
     ;;
 esac
