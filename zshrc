@@ -44,7 +44,7 @@ export PATH="$HOME/bin:$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
 typeset -a plugins
 plugins=(
     aliases
-    rtx
+    mise
     git
     gitignore
     git-auto-fetch
