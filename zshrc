@@ -42,22 +42,6 @@ source_if_exists ~/.aliases
 export PATH="$HOME/bin:$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
 
 typeset -a plugins
-plugins=(
-    aliases
-    mise
-    git
-    gitignore
-    git-auto-fetch
-    docker
-    docker-compose
-    history
-    zsh-syntax-highlighting
-    zsh-autosuggestions
-    zoxide
-    thefuck
-    rust
-)
-
 if [ "${OSTYPE#darwin}" != "$OSTYPE" ] # darwin prefix in OSTYPE
 then
     ID=macos
@@ -78,6 +62,22 @@ macos)
 *)
     ;;
 esac
+
+plugins+=(
+    aliases
+    git
+    gitignore
+    git-auto-fetch
+    docker
+    docker-compose
+    history
+    zsh-syntax-highlighting
+    zsh-autosuggestions
+    zoxide
+    thefuck
+    mise
+    rust
+)
 
 fpath+=$ZSH/custom/plugins/zsh-completions/src
 
