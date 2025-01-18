@@ -1,0 +1,4 @@
+[tools]
+uv = { version = "0.5.2" }
+ruff = { version = "0.9.2" }
+node = { version = "23.6.0" }
